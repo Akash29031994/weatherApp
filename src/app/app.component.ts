@@ -9,9 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'weatherApp';
-  imagePath = '../assets/images/concertio logo.jpg';
+  imagePath = '../assets/images/concertio logo.png';
   signOutFlag = false;
-  
+
   constructor(private _weatherService: WeatherService) {
     this.signOutFlag = this._weatherService.validateToken();
   }
