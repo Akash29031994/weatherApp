@@ -22,7 +22,6 @@ export class WeatherDetailsComponent implements OnInit {
     this.countries = [];
     this.constans = require('../../commons/constants/constants.json');
     this.countries = this.constans.countries;
-    // console.log(JSON.stringify(this.countries));
     this.weatherList = [];
     this.weatherRequest = new WeatherRequest();
   }
