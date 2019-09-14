@@ -1,0 +1,24 @@
+{
+    "countries": [
+        {
+            "code": "IN",
+            "name": "India"
+        },
+        {
+            "code": "AU",
+            "name": "Australia"
+        },
+        {
+            "code": "GB",
+            "name": "United Kingdom"
+        },
+        {
+            "code": "US",
+            "name": "United States"
+        },
+        {
+            "code": "FR",
+            "name": "France"
+        }
+    ]
+}

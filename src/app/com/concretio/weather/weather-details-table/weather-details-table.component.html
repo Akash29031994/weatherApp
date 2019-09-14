@@ -1,0 +1,24 @@
+<table class="table table-hover" id="basic-table" *ngIf="weatherList.length > 0">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Weather</th>
+            <th>Temperature</th>
+            <th>Min/Max Temperature</th>
+            <th>Pressure(hPa)</th>
+            <th>Air Speed(mph)</th>
+            <th>Humidity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let weather of weatherList">
+            <td>{{weather.time | date : 'full'}}</td>
+            <td>{{weather.weather}}</td>
+            <td>{{weather.temprature | number : '1.2-2'}}°C</td>
+            <td>{{weather.minTemprature | number : '1.2-2'}}/{{weather.maxTempRature | number : '1.2-2'}}</td>
+            <td>{{weather.pressure}}</td>
+            <td>{{weather.airSpeed}}</td>
+            <td>{{weather.humidity}}%</td>
+        </tr>
+    </tbody>
+</table>
