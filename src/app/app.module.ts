@@ -17,6 +17,7 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { AgmCoreModule } from '@agm/core';
 import { WeatherMapComponent } from './com/concretio/weather/weather-map/weather-map.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ExitGuard } from './com/concretio/commons/guards/exit-guard';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,7 @@ import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
     }),
     NgMultiSelectDropDownModule.forRoot()
   ],
-  providers: [WeatherService, AuthGuard, HttpClient, RequestService],
+  providers: [WeatherService, AuthGuard, ExitGuard, HttpClient, RequestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

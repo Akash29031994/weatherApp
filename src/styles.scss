@@ -1,2 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css';
+
+.error-message {
+    font-size: 14px;
+    color: red;
+}
+  
+.note {
+  font-size: 8px;
+}
+
+.float-right {
+  float: right;
+}

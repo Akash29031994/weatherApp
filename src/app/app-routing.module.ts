@@ -5,6 +5,7 @@ import { RegisterComponent } from './com/concretio/weather/register/register.com
 import { WeatherDetailsComponent } from './com/concretio/weather/weather-details/weather-details.component';
 import { AuthGuard } from './com/concretio/commons/guards/auth-guard.service';
 import { WeatherMapComponent } from './com/concretio/weather/weather-map/weather-map.component';
+import { ExitGuard } from './com/concretio/commons/guards/exit-guard';
 
 
 const routes: Routes = [
@@ -14,7 +15,8 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canDeactivate: [ExitGuard]
   },
   {
     path: 'weatherdetails',

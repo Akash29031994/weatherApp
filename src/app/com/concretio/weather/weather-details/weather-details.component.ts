@@ -17,27 +17,59 @@ export class WeatherDetailsComponent implements OnInit {
   weatherRequest: WeatherRequest;
   constans: any;
   mapDetails: any;
+  showMessage = false;
+  apiResponseError = false;
+  fieldsDisabled = true;
 
   constructor(private _requestService: RequestService, private _weatherService: WeatherService) { }
 
   ngOnInit() {
+    this.fieldsDisabled = false;
+    this.showMessage = false;
+    this.apiResponseError = false;
     this.mapDetails = new Object();
     this.mapDetails.lon = '';
     this.mapDetails.lat = '';
     this.constans = require('../../commons/constants/constants.json');
     this.weatherList = [];
+    this.formIntialise();
+  }
+
+  formIntialise() {
     this.weatherRequest = new WeatherRequest();
+    this.weatherRequest.city = '';
+    this.weatherRequest.countryCode = '';
+    this.weatherRequest.fromDate = null;
+    this.weatherRequest.toDate = null;
   }
 
   getWeatherDetails() {
-    this._requestService.postRequest('getWeatherDetails' , this.weatherRequest).subscribe((response: WeatherResponse) => {
-      this.weatherList = response.data;
-    }, error => {
+    this.showMessage = false;
+    this.apiResponseError = false;
+    if (this.validateForm()) {
+      this._requestService.postRequest('getWeatherDetails', this.weatherRequest).subscribe((response: WeatherResponse) => {
+        this.weatherList = response.data;
+        this.fieldsDisabled = true;
+      }, error => {
+        this.apiResponseError = false;
+        window.scroll(0, 0);
+      });
+    } else {
+      this.showMessage = true;
+      window.scroll(0, 0);
+    }
+  }
 
-    });
+  clear() {
+    this.fieldsDisabled = false;
+    this.apiResponseError = false;
+    this.showMessage = false;
+    this.weatherList = [];
+    this.formIntialise();
   }
 
   getLocation() {
+    this.apiResponseError = false;
     const url = environment.externalAPI + this.weatherRequest.city + ',' + this.weatherRequest.countryCode + '&appid='
       + this.constans.keys.open_weather_api_key;
     this._requestService.externalGetRequest(url).subscribe((response: any) => {
@@ -46,16 +78,36 @@ export class WeatherDetailsComponent implements OnInit {
       this._weatherService.setMapDetails(this.mapDetails);
       this._weatherService.navigate('../weathermap');
     }, error => {
-
+      this.apiResponseError = false;
+      window.scroll(0, 0);
     });
   }
 
   saveWeatherDetails() {
-    this._requestService.postRequest('saveWeatherDetails', this.weatherList).subscribe(response => {
+    this.showMessage = false;
+    this.apiResponseError = false;
+    if (this.validateForm()) {
+      this._requestService.postRequest('saveWeatherDetails', this.weatherList).subscribe(response => {
 
-    }, error => {
+      }, error => {
+        this.apiResponseError = false;
+        window.scroll(0, 0);
+      });
+    } else {
+      this.showMessage = true;
+      window.scroll(0, 0);
+    }
+  }
 
+  validateForm(): boolean {
+    let flag = true;
+    Object.keys(this.weatherRequest).forEach(key => {
+      if (!this.weatherRequest[key] || this.weatherRequest[key] === undefined || this.weatherRequest[key] === null
+        || this.weatherRequest[key] === '') {
+        flag = false;
+      }
     });
+    return flag;
   }
 
   downLoadPDF() {
