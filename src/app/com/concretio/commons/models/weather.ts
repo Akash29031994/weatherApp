@@ -22,5 +22,5 @@ export class WeatherRequest {
     public city: string;
     public fromDate: Date;
     public toDate: Date;
-    constructor () { }
+    constructor() { }
 }

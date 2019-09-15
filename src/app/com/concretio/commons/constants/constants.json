@@ -1,24 +1,5 @@
 {
-    "countries": [
-        {
-            "code": "IN",
-            "name": "India"
-        },
-        {
-            "code": "AU",
-            "name": "Australia"
-        },
-        {
-            "code": "GB",
-            "name": "United Kingdom"
-        },
-        {
-            "code": "US",
-            "name": "United States"
-        },
-        {
-            "code": "FR",
-            "name": "France"
-        }
-    ]
+    "keys": {
+        "open_weather_api_key": "06ed11f3cc0d294f57103663ba82daf0"
+    }
 }

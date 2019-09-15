@@ -4,6 +4,7 @@ import { LoginComponent } from './com/concretio/weather/login/login.component';
 import { RegisterComponent } from './com/concretio/weather/register/register.component';
 import { WeatherDetailsComponent } from './com/concretio/weather/weather-details/weather-details.component';
 import { AuthGuard } from './com/concretio/commons/guards/auth-guard.service';
+import { WeatherMapComponent } from './com/concretio/weather/weather-map/weather-map.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,11 @@ const routes: Routes = [
   {
     path: 'weatherdetails',
     component: WeatherDetailsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'weathermap',
+    component: WeatherMapComponent,
     canActivate: [AuthGuard]
   },
   {

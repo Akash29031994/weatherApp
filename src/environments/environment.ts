@@ -8,7 +8,8 @@ export const environment = {
   login: 'authenticate',
   register: 'register',
   getWeatherDetails: 'getwheatherdetails',
-  saveWeatherDetails: 'savewheatherdetails'
+  saveWeatherDetails: 'savewheatherdetails',
+  externalAPI: 'http://api.openweathermap.org/data/2.5/weather?q='
 };
 
 /*

@@ -14,6 +14,9 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './com/concretio/commons/pipes/filter.pipe';
 import { WeatherDetailsTableComponent } from './com/concretio/weather/weather-details-table/weather-details-table.component';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
+import { AgmCoreModule } from '@agm/core';
+import { WeatherMapComponent } from './com/concretio/weather/weather-map/weather-map.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,19 @@ import { AngularFontAwesomeModule } from 'angular-font-awesome';
     LoginComponent,
     RegisterComponent,
     FilterPipe,
-    WeatherDetailsTableComponent
+    WeatherDetailsTableComponent,
+    WeatherMapComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyDhyDktSigXO_CMURhh-m4x4_YWyvUvnzM'
+    }),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   providers: [WeatherService, AuthGuard, HttpClient, RequestService],
   bootstrap: [AppComponent]

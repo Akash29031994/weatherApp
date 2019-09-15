@@ -30,4 +30,8 @@ export class RequestService {
         const url = environment.host + environment[endpoint];
         return this._httpClient.post(url, body, {headers});
     }
+
+    public externalGetRequest(url: string) {
+        return this._httpClient.get(url);
+    }
 }
