@@ -20,10 +20,12 @@ export class WeatherDetailsComponent implements OnInit {
   showMessage = false;
   apiResponseError = false;
   fieldsDisabled = true;
+  maxDate: Date;
 
   constructor(private _requestService: RequestService, private _weatherService: WeatherService) { }
 
   ngOnInit() {
+    this.maxDate = new Date();
     this.fieldsDisabled = false;
     this.showMessage = false;
     this.apiResponseError = false;
@@ -107,6 +109,13 @@ export class WeatherDetailsComponent implements OnInit {
         flag = false;
       }
     });
+    if (flag) {
+      const fromDateTime = new Date(this.weatherRequest.fromDate).getTime();
+      const toDateTime = new Date(this.weatherRequest.toDate).getTime();
+      if (toDateTime < fromDateTime) {
+        flag = false;
+      }
+    }
     return flag;
   }
 
