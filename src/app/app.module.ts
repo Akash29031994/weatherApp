@@ -36,7 +36,7 @@ import { ExitGuard } from './com/concretio/commons/guards/exit-guard';
     AppRoutingModule,
     AngularFontAwesomeModule,
     AgmCoreModule.forRoot({
-      apiKey: '<APIKEY>'
+      apiKey: 'AIzaSyDhyDktSigXO_CMURhh-m4x4_YWyvUvnzM'
     }),
     NgMultiSelectDropDownModule.forRoot()
   ],
